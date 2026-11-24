@@ -149,22 +149,31 @@
     <ClCompile Include="Common\DotEnv.cpp" />
     <ClCompile Include="Network\TcpSocketReceiver.cpp" />
     <ClCompile Include="Math\GeoCalculator.cpp" />
+    <ClCompile Include="Math\GeoConversions.cpp" />
+    <ClCompile Include="RayMarching\BlockSkipRayMarcher.cpp" />
     <ClCompile Include="Terrain\GeoTiffHeightProvider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Downloads\json.hpp" />
     <ClInclude Include="Common\Constants.hpp" />
     <ClInclude Include="Common\DotEnv.hpp" />
+    <ClInclude Include="RayMarching\BlockSkipRayMarcher.hpp" />
+    <ClInclude Include="RayMarching\IRayMarching.hpp" />
     <ClInclude Include="Terrain\GeoTiffHeightProvider.hpp" />
     <ClInclude Include="Models\HeightTileHeader.hpp" />
     <ClInclude Include="Terrain\IHeightProvider.hpp" />
     <ClInclude Include="Models\GroundIntersection.hpp" />
     <ClInclude Include="Models\TelemetryFrame.hpp" />
     <ClInclude Include="Models\Ray.hpp" />
+    <ClInclude Include="Models\Bounds.hpp" />
+    <ClInclude Include="Models\RayHitResult.hpp" />
+    <ClInclude Include="Models\TerrainBlock.hpp" />
+    <ClInclude Include="Models\TerrainCell.hpp" />
     <ClInclude Include="Network\ITelemetryReceiver.hpp" />
     <ClInclude Include="Network\TcpSocketReceiver.hpp" />
     <ClInclude Include="Math\IGeoCalculator.hpp" />
     <ClInclude Include="Math\GeoCalculator.hpp" />
+    <ClInclude Include="Math\GeoConversions.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\raven-math\raven-math\raven-math\raven-math.vcxproj">

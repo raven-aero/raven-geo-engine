@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Terrain">
       <UniqueIdentifier>{2c7e9a41-5b3d-4f8e-9a6c-1d2e3f4a5b6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\RayMarching">
+      <UniqueIdentifier>{0abf2998-529c-43b2-ad77-4a0210d5daac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RayMarching">
+      <UniqueIdentifier>{81675f7c-152a-4d32-9cec-e08efec2d755}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\DotEnv.cpp">
@@ -51,8 +57,14 @@
     <ClCompile Include="Math\GeoCalculator.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Math\GeoConversions.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
     <ClCompile Include="Terrain\GeoTiffHeightProvider.cpp">
       <Filter>Source Files\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="RayMarching\BlockSkipRayMarcher.cpp">
+      <Filter>Source Files\RayMarching</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +80,18 @@
     <ClInclude Include="Models\Ray.hpp">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="Models\Bounds.hpp">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\RayHitResult.hpp">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\TerrainBlock.hpp">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\TerrainCell.hpp">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
     <ClInclude Include="Network\ITelemetryReceiver.hpp">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
@@ -78,6 +102,9 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Math\GeoCalculator.hpp">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\GeoConversions.hpp">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Downloads\json.hpp">
@@ -94,6 +121,12 @@
     </ClInclude>
     <ClInclude Include="Terrain\GeoTiffHeightProvider.hpp">
       <Filter>Header Files\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="RayMarching\IRayMarching.hpp">
+      <Filter>Header Files\RayMarching</Filter>
+    </ClInclude>
+    <ClInclude Include="RayMarching\BlockSkipRayMarcher.hpp">
+      <Filter>Header Files\RayMarching</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

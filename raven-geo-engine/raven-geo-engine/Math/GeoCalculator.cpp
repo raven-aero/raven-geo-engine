@@ -1,20 +1,13 @@
 #include "GeoCalculator.hpp"
+#include "GeoConversions.hpp"
 #include <cmath>
 #include <spdlog/spdlog.h>
-#include <numbers>
 
-using std::numbers::pi;
 using RavenMaths::Matrix3x3;
 using RavenMaths::Vector3D;
 
 namespace Math 
 {
-    // a reference member can only be bound here, in the initializer list - never assigned in the body
-    GeoCalculator::GeoCalculator(const IHeightProvider& heightProvider)
-        : _heightProvider(heightProvider)
-    {
-    }
-
     Models::Ray GeoCalculator::calculateRay(const Models::TelemetryFrame& frame) 
     {
         Models::Ray ray;
@@ -33,7 +26,8 @@ namespace Math
             frame.sensorLongitude.value(),
             frame.sensorAltitudeMeters.value()
         );
-        spdlog::info(Constants::Logs::CALC_RAY, ray.origin.toString(), ray.direction.toString());
+        spdlog::info(Constants::Logs::CALC_RAY, ray.origin.getX(), ray.origin.getY(), ray.origin.getZ(),
+            ray.direction.getX(), ray.direction.getY(), ray.direction.getZ());
         return ray;
     }
 
@@ -53,14 +47,6 @@ namespace Math
         return missingFields;
     }
 
-	double GeoCalculator::toRadians(const double degrees)
-	{
-		return degrees * (pi / Constants::Math::SEMICIRCLE_DEGREES);
-	}
-	double GeoCalculator::toDegrees(const double radians)
-	{
-		return radians * (Constants::Math::SEMICIRCLE_DEGREES / pi);
-	}
 
     Matrix3x3 GeoCalculator::buildGimbalRotation(double panDeg, double tiltDeg)
     {
@@ -134,12 +120,11 @@ namespace Math
 		double eastMeters = slantRangeMeters * ray.direction.getY();
 
 		// converting the north/east meters to latitude/longitude
-        double deltaLat = toDegrees(northMeters / Constants::Math::EARTH_RADIUS_M);
-        double deltaLon = toDegrees(eastMeters / (Constants::Math::EARTH_RADIUS_M * std::cos(toRadians(ray.origin.getX()))));
+        DegreesOffset offset = metersToDegrees(northMeters, eastMeters, ray.origin.getX());
 
 		return  Models::GroundIntersection{
-			ray.origin.getX() + deltaLat,
-			ray.origin.getY() + deltaLon,
+			ray.origin.getX() + offset.latitudeDegrees,
+			ray.origin.getY() + offset.longitudeDegrees,
 			groundAltitudeMeters,
             slantRangeMeters
 		};  
